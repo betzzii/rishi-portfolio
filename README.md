@@ -13,7 +13,7 @@ This is my **personal portfolio website**, designed to showcase my **projects, c
 It’s built with a **modern grey-black theme**, optimized for performance, readability, and a clean developer aesthetic.
 
 **🔗 Live Demo:** [rishi-portfolio.github.io](https://rishi-portfolio.github.io)  
-**💻 GitHub Repo:** [github.com/betzzii/portfolio](https://github.com/betzzii/portfolio)
+**💻 GitHub Repo:** [github.com/betzzii/portfolio](https://github.com/betzzii/rishi-portfolio)
 
 ---
 
