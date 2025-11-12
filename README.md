@@ -12,7 +12,7 @@ My personal portfolio website built with HTML, CSS, and JavaScript. Showcases pr
 This is my **personal portfolio website**, designed to showcase my **projects, certifications, and skills** as an aspiring software developer.  
 It’s built with a **modern grey-black theme**, optimized for performance, readability, and a clean developer aesthetic.
 
-**🔗 Live Demo:** [rishi-portfolio.github.io](https://rishi-portfolio.github.io)  
+**🔗 Live Demo:** [rishi-portfolio.github.io](https://betzzii.github.io/rishi-portfolio/) 
 **💻 GitHub Repo:** [github.com/betzzii/portfolio](https://github.com/betzzii/rishi-portfolio)
 
 ---
