@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rishi • Software Technologist</title>
+  <meta name="description" content="Rishi – IT student majoring in Software Technology. Portfolio, projects, certifications, and contact." />
+  <link rel="icon" href="favicon.ico" />
+
+  <style>
+    :root{
+      --bg:#0f1115;
+      --bg-soft:#151822;
+      --text:#e6e8ef;
+      --muted:#a8acb8;
+      --accent:#7aa2ff;
+      --accent-2:#b9c2ff;
+      --radius:16px;
+      --shadow:0 10px 24px rgba(0,0,0,.35);
+      --max:1080px;
+    }
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;padding:0;
+      background:var(--bg);
+      color:var(--text);
+      font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+    }
+    a{color:var(--accent);text-decoration:none}
+    a:hover{color:var(--accent-2)}
+    .wrap{max-width:var(--max);margin:0 auto;padding:28px}
+    header{display:flex;justify-content:space-between;align-items:center;margin-bottom:40px;}
+    .brand strong{font-size:22px}
+    nav{display:flex;gap:20px;}
+    nav a{color:var(--muted)}
+    nav a:hover{color:var(--text)}
+    .hero{text-align:center;padding:40px 0;}
+    .hero h1{font-size:36px;margin:10px 0;}
+    .hero p{color:var(--muted);max-width:600px;margin:auto;}
+    .btn{display:inline-block;margin:10px;padding:10px 20px;border:1px solid var(--accent);border-radius:var(--radius);color:var(--accent);font-weight:600;}
+    .btn:hover{background:var(--accent);color:var(--bg);}
+    section{margin:60px 0;}
+    h2{text-align:center;margin-bottom:20px;}
+    .skills,.projects{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;}
+    .chip{padding:8px 12px;border-radius:999px;background:var(--bg-soft);border:1px solid rgba(255,255,255,.06);}
+    footer{text-align:center;color:var(--muted);margin:40px 0;}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <strong>Rishi</strong><br/>
+        <small>Software Technologist • Macquarie University</small>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h1>Hello, I'm Rishi 👋</h1>
+      <p>Information Technology student majoring in Software Technology at Macquarie University. I build clean, efficient, and user-friendly digital experiences.</p>
+      <a class="btn" href="mailto:rishidurga09@gmail.com">Contact Me</a>
+      <a class="btn" href="https://github.com/betzzii" target="_blank">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/rishi-rishi-baa657303" target="_blank">LinkedIn</a>
+    </section>
+
+    <section id="skills">
+      <h2>Technical Skills</h2>
+      <div class="skills">
+        <span class="chip">Python</span>
+        <span class="chip">Java</span>
+        <span class="chip">JavaScript</span>
+        <span class="chip">HTML</span>
+        <span class="chip">CSS</span>
+        <span class="chip">SQL</span>
+        <span class="chip">React</span>
+        <span class="chip">Node.js</span>
+        <span class="chip">Flask</span>
+        <span class="chip">Git</span>
+        <span class="chip">Docker</span>
+        <span class="chip">Kali Linux</span>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="projects">
+        <div class="chip">Portfolio Website</div>
+        <div class="chip">Task Tracker + Calendar</div>
+        <div class="chip">AI Resume Analyzer</div>
+        <div class="chip">CyberDefense Simulator</div>
+        <div class="chip">Crypto Price Predictor</div>
+        <div class="chip">Phishing URL Detector</div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p style="text-align:center">
+        📧 <a href="mailto:rishidurga09@gmail.com">rishidurga09@gmail.com</a><br/>
+        💻 <a href="https://github.com/betzzii" target="_blank">github.com/betzzii</a><br/>
+        🔗 <a href="https://www.linkedin.com/in/rishi-rishi-baa657303" target="_blank">linkedin.com/in/rishi-rishi-baa657303</a>
+      </p>
+    </section>
+
+    <footer>
+      © <script>document.write(new Date().getFullYear())</script> Rishi • All Rights Reserved
+    </footer>
+  </div>
+</body>
+</html>
