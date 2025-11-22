@@ -172,7 +172,7 @@
       overflow:hidden;
       position:relative;
       transform-style:preserve-3d;
-      transition:transform 220ms ease-out;
+      transition:transform 220ms ease-out, box-shadow 220ms ease-out;
     }
     .hero-main::before{
       content:"";
@@ -287,6 +287,24 @@
       padding:18px 18px 20px;
       overflow:hidden;
       box-shadow:var(--shadow-deep);
+      transition:transform 220ms ease-out, box-shadow 220ms ease-out;
+    }
+    .hero-side::before{
+      content:"";
+      position:absolute;
+      inset:-40%;
+      background:conic-gradient(from 0deg,rgba(255,75,125,.4),rgba(122,162,255,.3),transparent,rgba(255,75,125,.4));
+      opacity:0;
+      mix-blend-mode:screen;
+      transition:opacity 320ms ease-out;
+      pointer-events:none;
+    }
+    .hero-side:hover{
+      transform:translateY(-4px);
+      box-shadow:0 28px 72px rgba(0,0,0,.9);
+    }
+    .hero-side:hover::before{
+      opacity:.8;
     }
     .hero-side-top{
       display:flex;justify-content:space-between;align-items:center;
@@ -309,31 +327,22 @@
       overflow:hidden;
     }
     .avatar-img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  transform:scale(1.02);
-  filter:saturate(1.02) contrast(1.05);
-  transition:
-    transform 420ms ease-out,
-    filter 420ms ease-out,
-    box-shadow 420ms ease-out;
-}
-
-/* Subtle floating / highlight on the hero card */
-.hero-side:hover .avatar-img{
-  transform:scale(1.06) translateY(-2px);
-  filter:saturate(1.08) contrast(1.08);
-}
-
-    .avatar-inner{
-      position:absolute;inset:0;
-      display:grid;place-items:center;
-      font-size:40px;
-      color:rgba(255,255,255,.85);
-      letter-spacing:.2em;
-      text-transform:uppercase;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transform:scale(1.02);
+      filter:saturate(1.02) contrast(1.05);
+      transition:
+        transform 420ms ease-out,
+        filter 420ms ease-out,
+        box-shadow 420ms ease-out;
     }
+
+    .hero-side:hover .avatar-img{
+      transform:scale(1.06) translateY(-2px);
+      filter:saturate(1.08) contrast(1.08);
+    }
+
     .floating-tag{
       font-size:11px;
       padding:6px 10px;
@@ -392,8 +401,21 @@
       margin-top:60px;
     }
     .section-header{
-      display:flex;justify-content:space-between;align-items:flex-end;
-      margin-bottom:18px;gap:16px;
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      margin-bottom:18px;
+      gap:16px;
+      position:relative;
+    }
+    .section-header::after{
+      content:"";
+      flex:1;
+      height:1px;
+      margin-left:12px;
+      border-radius:999px;
+      background:linear-gradient(to right,rgba(255,75,125,.85),transparent);
+      opacity:.75;
     }
     .section-title{
       font-size:20px;font-weight:600;
@@ -402,28 +424,80 @@
       font-size:13px;color:var(--muted);
     }
 
+    /* FUTURISTIC CARDS ------------------------------------------------------ */
     .card{
-      background:var(--bg-soft);
+      position:relative;
+      overflow:hidden;
       border-radius:var(--radius);
       border:var(--border);
       padding:18px 18px 16px;
       box-shadow:var(--shadow-soft);
+      background-image:
+        radial-gradient(circle at 0 0,rgba(255,75,125,.24),transparent 55%),
+        radial-gradient(circle at 100% 100%,rgba(122,162,255,.26),transparent 55%),
+        linear-gradient(to bottom right,#0b0d16,#10131c);
+      background-size:140% 140%,140% 140%,auto;
+      background-position:0% 0%,100% 100%,center;
+      animation:cardGlow 16s ease-in-out infinite alternate;
+    }
+    .card::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:inherit;
+      background:radial-gradient(circle at 10% -10%,rgba(255,255,255,.25),transparent 60%);
+      opacity:0;
+      transition:opacity 260ms ease-out;
+      mix-blend-mode:screen;
+      pointer-events:none;
+    }
+    .card:hover::after{
+      opacity:.8;
+    }
+    @keyframes cardGlow{
+      0%{
+        background-position:0% 0%,100% 100%,center;
+      }
+      100%{
+        background-position:100% 0%,0% 100%,center;
+      }
     }
 
     .skills-grid{
       display:flex;flex-wrap:wrap;gap:10px;
     }
+
+    /* Animated chips -------------------------------------------------------- */
     .chip{
       padding:8px 12px;
       border-radius:999px;
-      background:var(--bg-softer);
       border:var(--border);
       font-size:12px;
       color:var(--muted);
-      display:inline-flex;align-items:center;gap:6px;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
       transform:translateY(0);
-      transition:transform var(--transition-fast),box-shadow var(--transition-fast),border-color var(--transition-fast),background var(--transition-fast),color var(--transition-fast);
+      transition:
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast),
+        border-color var(--transition-fast),
+        background var(--transition-fast),
+        color var(--transition-fast);
+      background-image:linear-gradient(
+        120deg,
+        #181c27,
+        #252c3e,
+        #181c27
+      );
+      background-size:180% 180%;
+      animation:chipGlow 18s ease-in-out infinite alternate;
     }
+    @keyframes chipGlow{
+      0%{background-position:0% 50%;}
+      100%{background-position:100% 50%;}
+    }
+
     .chip::before{
       content:"";
       width:6px;height:6px;border-radius:50%;
@@ -434,7 +508,7 @@
       transform:translateY(-2px);
       box-shadow:0 12px 24px rgba(0,0,0,.6);
       border-color:rgba(255,255,255,.18);
-      background:linear-gradient(135deg,rgba(122,162,255,.18),rgba(5,6,10,.9));
+      background:linear-gradient(135deg,rgba(122,162,255,.28),rgba(5,6,10,.9));
       color:var(--ink);
     }
 
@@ -797,8 +871,8 @@
         <div class="hero-side-main">
           <div class="avatar-frame">
             <img src="rishi-headshot.png"
-             alt="Rishi - Software Technologist"
-             class="avatar-img" />
+                 alt="Rishi - Software Technologist"
+                 class="avatar-img" />
           </div>
 
           <div class="floating-tag">Building cool things with code.</div>
