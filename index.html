@@ -46,6 +46,19 @@
       padding:20px clamp(18px,3vw,32px) 40px;
     }
 
+    /* SCROLL BAR ----------------------------------------------------------- */
+    #scroll-bar{
+      position:fixed;
+      top:0;
+      left:0;
+      height:3px;
+      width:0%;
+      background:linear-gradient(90deg,#ff4b7d,#ffb347);
+      z-index:100;
+      box-shadow:0 0 18px rgba(255,75,125,.9);
+      transform-origin:left;
+    }
+
     /* HEADER ---------------------------------------------------------------- */
     header{
       position:sticky;
@@ -90,6 +103,7 @@
       color:var(--muted);
       position:relative;
       overflow:hidden;
+      transition:color var(--transition-fast);
     }
     .nav-links a::before{
       content:"";
@@ -100,6 +114,13 @@
     .nav-links a span{position:relative;z-index:1}
     .nav-links a:hover{color:var(--ink)}
     .nav-links a:hover::before{opacity:1}
+
+    .nav-links a.nav-active{
+      color:var(--ink);
+    }
+    .nav-links a.nav-active::before{
+      opacity:1;
+    }
 
     .pill{
       padding:8px 14px;
@@ -655,9 +676,40 @@
       box-shadow:0 14px 30px rgba(255,75,125,.7);
     }
     .case-btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-soft)}
+
+    /* CUSTOM CURSOR --------------------------------------------------------- */
+    #cursor-halo{
+      position:fixed;
+      top:0;
+      left:0;
+      width:26px;
+      height:26px;
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,.5);
+      box-shadow:0 0 25px rgba(255,75,125,.7);
+      transform:translate(-50%,-50%);
+      pointer-events:none;
+      z-index:120;
+      mix-blend-mode:screen;
+      opacity:0;
+      transition:width 140ms ease-out,height 140ms ease-out,opacity 160ms ease-out,border-color 160ms ease-out;
+    }
+    body{
+      cursor:none;
+    }
+    .hover-target{
+      cursor:none;
+    }
+    @media (max-width:768px){
+      body{cursor:auto;}
+      #cursor-halo{display:none;}
+    }
   </style>
 </head>
 <body>
+  <div id="scroll-bar"></div>
+  <div id="cursor-halo"></div>
+
   <header>
     <div class="wrap nav">
       <div class="brand">
@@ -705,9 +757,9 @@
           </p>
 
           <div class="hero-actions">
-            <a class="pill pill-accent" href="#projects">View projects</a>
-            <a class="pill" href="https://github.com/betzzii" target="_blank" rel="noopener">GitHub ↗</a>
-            <a class="pill" href="https://www.linkedin.com/in/rishi-rishi-baa657303" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a class="pill pill-accent hover-target" href="#projects">View projects</a>
+            <a class="pill hover-target" href="https://github.com/betzzii" target="_blank" rel="noopener">GitHub ↗</a>
+            <a class="pill hover-target" href="https://www.linkedin.com/in/rishi-rishi-baa657303" target="_blank" rel="noopener">LinkedIn ↗</a>
           </div>
 
           <div class="hero-meta">
@@ -718,7 +770,7 @@
         </div>
       </div>
 
-      <aside class="hero-side">
+      <aside class="hero-side reveal">
         <div class="orb orb-3"></div>
         <div class="hero-side-top">
           <span>Live preview</span>
@@ -751,21 +803,21 @@
       </div>
       <div class="card">
         <div class="skills-grid">
-          <span class="chip">Python</span>
-          <span class="chip">Java</span>
-          <span class="chip">JavaScript</span>
-          <span class="chip">HTML</span>
-          <span class="chip">CSS</span>
-          <span class="chip">SQL</span>
-          <span class="chip">React</span>
-          <span class="chip">Node.js</span>
-          <span class="chip">Flask</span>
-          <span class="chip">Git</span>
-          <span class="chip">Docker</span>
-          <span class="chip">Kali Linux</span>
-          <span class="chip">REST APIs</span>
-          <span class="chip">Firestore / Firebase</span>
-          <span class="chip">Cloud (AWS / Azure basics)</span>
+          <span class="chip hover-target">Python</span>
+          <span class="chip hover-target">Java</span>
+          <span class="chip hover-target">JavaScript</span>
+          <span class="chip hover-target">HTML</span>
+          <span class="chip hover-target">CSS</span>
+          <span class="chip hover-target">SQL</span>
+          <span class="chip hover-target">React</span>
+          <span class="chip hover-target">Node.js</span>
+          <span class="chip hover-target">Flask</span>
+          <span class="chip hover-target">Git</span>
+          <span class="chip hover-target">Docker</span>
+          <span class="chip hover-target">Kali Linux</span>
+          <span class="chip hover-target">REST APIs</span>
+          <span class="chip hover-target">Firestore / Firebase</span>
+          <span class="chip hover-target">Cloud (AWS / Azure basics)</span>
         </div>
       </div>
     </section>
@@ -778,50 +830,50 @@
       </div>
 
       <div class="projects-grid">
-        <article class="card project-card">
+        <article class="card project-card hover-target">
           <div class="project-title">Portfolio Website</div>
           <div class="project-meta">A cinematic, animated personal site to showcase my work.</div>
           <div class="project-tags">
             <span>HTML</span><span>CSS</span><span>JavaScript</span>
           </div>
           <div class="project-links">
-            <a class="link-pill" href="#">Live (this site)</a>
-            <a class="link-pill" href="https://github.com/betzzii/rishi-portfolio" target="_blank" rel="noopener">Code ↗</a>
+            <span class="link-pill hover-target">Live (this site)</span>
+            <a class="link-pill hover-target" href="https://github.com/betzzii/rishi-portfolio" target="_blank" rel="noopener">Code ↗</a>
           </div>
         </article>
 
-        <article class="card project-card">
+        <article class="card project-card hover-target">
           <div class="project-title">Task Tracker + Calendar</div>
           <div class="project-meta">Task manager with calendar view, auth, and real-time sync using Firebase.</div>
           <div class="project-tags">
             <span>JavaScript</span><span>Firebase Auth</span><span>Firestore</span>
           </div>
           <div class="project-links">
-            <a class="link-pill" href="https://betzzii.github.io/rishi-task-tracker" target="_blank" rel="noopener">Live ↗</a>
-            <a class="link-pill" href="https://github.com/betzzii/rishi-task-tracker" target="_blank" rel="noopener">Code ↗</a>
-            <button class="link-pill" id="open-case-study" type="button">Cine-style case study 🎬</button>
+            <a class="link-pill hover-target" href="https://betzzii.github.io/rishi-task-tracker" target="_blank" rel="noopener">Live ↗</a>
+            <a class="link-pill hover-target" href="https://github.com/betzzii/rishi-task-tracker" target="_blank" rel="noopener">Code ↗</a>
+            <button class="link-pill hover-target" id="open-case-study" type="button">Cine-style case study 🎬</button>
           </div>
         </article>
 
-        <article class="card project-card">
+        <article class="card project-card hover-target">
           <div class="project-title">AI Resume Analyzer</div>
           <div class="project-meta">Experimental tool that scores resumes against job descriptions using NLP.</div>
           <div class="project-tags">
             <span>Python</span><span>Flask</span><span>NLP</span>
           </div>
           <div class="project-links">
-            <span class="link-pill">Coming soon</span>
+            <span class="link-pill hover-target">Coming soon</span>
           </div>
         </article>
 
-        <article class="card project-card">
+        <article class="card project-card hover-target">
           <div class="project-title">Crypto Price Predictor</div>
           <div class="project-meta">Baseline ML model to forecast price ranges from historical crypto data.</div>
           <div class="project-tags">
             <span>Python</span><span>TensorFlow</span><span>APIs</span>
           </div>
           <div class="project-links">
-            <span class="link-pill">Coming soon</span>
+            <span class="link-pill hover-target">Coming soon</span>
           </div>
         </article>
       </div>
@@ -836,15 +888,15 @@
       <div class="card contact-card">
         <div class="contact-row">
           <div class="contact-label">Email</div>
-          <div class="contact-value"><a href="mailto:rishidurga09@gmail.com">rishidurga09@gmail.com</a></div>
+          <div class="contact-value"><a class="hover-target" href="mailto:rishidurga09@gmail.com">rishidurga09@gmail.com</a></div>
         </div>
         <div class="contact-row">
           <div class="contact-label">GitHub</div>
-          <div class="contact-value"><a href="https://github.com/betzzii" target="_blank" rel="noopener">github.com/betzzii</a></div>
+          <div class="contact-value"><a class="hover-target" href="https://github.com/betzzii" target="_blank" rel="noopener">github.com/betzzii</a></div>
         </div>
         <div class="contact-row">
           <div class="contact-label">LinkedIn</div>
-          <div class="contact-value"><a href="https://www.linkedin.com/in/rishi-rishi-baa657303" target="_blank" rel="noopener">linkedin.com/in/rishi-rishi-baa657303</a></div>
+          <div class="contact-value"><a class="hover-target" href="https://www.linkedin.com/in/rishi-rishi-baa657303" target="_blank" rel="noopener">linkedin.com/in/rishi-rishi-baa657303</a></div>
         </div>
         <div class="contact-row">
           <div class="contact-label">Location</div>
@@ -922,13 +974,13 @@
       <div class="case-footer">
         <div>Scroll the main page to see more projects and skills.</div>
         <div class="case-actions">
-          <a class="case-btn" href="https://github.com/betzzii/rishi-task-tracker" target="_blank" rel="noopener">
+          <a class="case-btn hover-target" href="https://github.com/betzzii/rishi-task-tracker" target="_blank" rel="noopener">
             View code ↗
           </a>
-          <a class="case-btn case-btn-main" href="https://betzzii.github.io/rishi-task-tracker" target="_blank" rel="noopener">
+          <a class="case-btn case-btn-main hover-target" href="https://betzzii.github.io/rishi-task-tracker" target="_blank" rel="noopener">
             Open live app →
           </a>
-          <button class="case-btn" id="close-case">Close ✕</button>
+          <button class="case-btn hover-target" id="close-case">Close ✕</button>
         </div>
       </div>
     </div>
@@ -981,6 +1033,40 @@
       });
     }
 
+    // Scroll progress bar
+    const scrollBar = document.getElementById("scroll-bar");
+    window.addEventListener("scroll", () => {
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
+      if (scrollBar) scrollBar.style.width = scrolled + "%";
+    });
+
+    // Active nav link on scroll
+    const sections = Array.from(document.querySelectorAll("main section[id]"));
+    const navLinks = Array.from(document.querySelectorAll(".nav-links a"));
+
+    function setActiveNav(id){
+      navLinks.forEach(link => {
+        const href = link.getAttribute("href") || "";
+        if(href === "#" + id){
+          link.classList.add("nav-active");
+        } else {
+          link.classList.remove("nav-active");
+        }
+      });
+    }
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          const id = entry.target.getAttribute("id");
+          if(id) setActiveNav(id);
+        }
+      });
+    },{threshold:0.45});
+
+    sections.forEach(sec => sectionObserver.observe(sec));
+
     // Cine-style case study overlay
     const overlay = document.getElementById("case-overlay");
     const openCase = document.getElementById("open-case-study");
@@ -1008,6 +1094,31 @@
     }
     window.addEventListener("keydown",(e)=>{
       if(e.key === "Escape") closeOverlay();
+    });
+
+    // Custom cursor halo
+    const cursorHalo = document.getElementById("cursor-halo");
+    window.addEventListener("mousemove",(e)=>{
+      if(!cursorHalo) return;
+      cursorHalo.style.opacity = "1";
+      cursorHalo.style.transform = `translate(${e.clientX}px,${e.clientY}px)`;
+    });
+
+    const hoverTargets = Array.from(document.querySelectorAll("a,button,.project-card,.chip,.link-pill,.pill"));
+    hoverTargets.forEach(el => {
+      el.classList.add("hover-target");
+      el.addEventListener("mouseenter", () => {
+        if(!cursorHalo) return;
+        cursorHalo.style.width = "42px";
+        cursorHalo.style.height = "42px";
+        cursorHalo.style.borderColor = "rgba(255,180,125,.9)";
+      });
+      el.addEventListener("mouseleave", () => {
+        if(!cursorHalo) return;
+        cursorHalo.style.width = "26px";
+        cursorHalo.style.height = "26px";
+        cursorHalo.style.borderColor = "rgba(255,255,255,.5)";
+      });
     });
   </script>
 </body>
