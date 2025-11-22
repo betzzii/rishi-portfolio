@@ -308,6 +308,24 @@
       position:relative;
       overflow:hidden;
     }
+    .avatar-img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transform:scale(1.02);
+  filter:saturate(1.02) contrast(1.05);
+  transition:
+    transform 420ms ease-out,
+    filter 420ms ease-out,
+    box-shadow 420ms ease-out;
+}
+
+/* Subtle floating / highlight on the hero card */
+.hero-side:hover .avatar-img{
+  transform:scale(1.06) translateY(-2px);
+  filter:saturate(1.08) contrast(1.08);
+}
+
     .avatar-inner{
       position:absolute;inset:0;
       display:grid;place-items:center;
@@ -778,8 +796,11 @@
         </div>
         <div class="hero-side-main">
           <div class="avatar-frame">
-            <div class="avatar-inner">RS</div>
+            <img src="rishi-headshot.jpg"
+             alt="Rishi - Software Technologist"
+             class="avatar-img" />
           </div>
+
           <div class="floating-tag">Building cool things with code.</div>
         </div>
         <div class="hero-side-footer">
