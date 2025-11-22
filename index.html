@@ -35,6 +35,7 @@
         var(--bg);
       color:var(--ink);
       overflow-x:hidden;
+      scroll-behavior:smooth;
     }
     a{color:inherit;text-decoration:none}
     a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
@@ -51,7 +52,7 @@
       top:0;
       z-index:40;
       backdrop-filter:blur(18px) saturate(130%);
-      background:linear-gradient(to bottom,rgba(5,6,10,.95),rgba(5,6,10,.7),transparent);
+      background:linear-gradient(to bottom,rgba(5,6,10,.97),rgba(5,6,10,.7),transparent);
       border-bottom:1px solid rgba(255,255,255,.06);
     }
     .nav{
@@ -150,6 +151,7 @@
       overflow:hidden;
       position:relative;
       transform-style:preserve-3d;
+      transition:transform 220ms ease-out;
     }
     .hero-main::before{
       content:"";
@@ -479,6 +481,180 @@
       opacity:1;
       transform:translateY(0);
     }
+
+    /* CINE-STYLE CASE STUDY OVERLAY ---------------------------------------- */
+    .case-overlay{
+      position:fixed;
+      inset:0;
+      background:radial-gradient(circle at 50% 0%,rgba(255,75,125,.28),transparent 55%),
+                 radial-gradient(circle at 100% 100%,rgba(122,162,255,.3),transparent 60%),
+                 #05060a;
+      color:var(--ink);
+      z-index:60;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      opacity:0;
+      pointer-events:none;
+      transform:translateY(20px);
+      transition:opacity 320ms ease-out,transform 320ms ease-out;
+    }
+    .case-overlay.open{
+      opacity:1;
+      pointer-events:auto;
+      transform:translateY(0);
+    }
+    .case-frame{
+      width:min(1100px,92vw);
+      border-radius:26px;
+      border:1px solid rgba(255,255,255,.18);
+      background:#05060a;
+      box-shadow:0 30px 80px rgba(0,0,0,.9);
+      overflow:hidden;
+      display:grid;
+      grid-template-rows:auto 1fr auto;
+    }
+    .case-header{
+      padding:14px 22px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      color:var(--muted);
+      background:#030308;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .case-logo{
+      font-weight:800;
+      letter-spacing:.22em;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .case-logo span:first-child{
+      width:18px;height:18px;border-radius:50%;
+      background:#ff4b7d;
+      display:grid;place-items:center;
+      font-size:11px;
+      color:#05060a;
+    }
+    .case-body{
+      display:grid;
+      grid-template-columns:1.2fr 1fr;
+      gap:18px;
+      padding:22px;
+      background:
+        radial-gradient(circle at 0 0,rgba(255,75,125,.22),transparent 55%),
+        radial-gradient(circle at 120% 120%,rgba(122,162,255,.25),transparent 60%),
+        #05060a;
+    }
+    @media (max-width:900px){
+      .case-body{grid-template-columns:1fr}
+    }
+    .case-left-title{
+      font-size:clamp(32px,6vw,46px);
+      font-weight:900;
+      letter-spacing:.25em;
+      text-transform:uppercase;
+      margin-bottom:8px;
+    }
+    .case-subtitle{
+      font-size:13px;
+      text-transform:uppercase;
+      letter-spacing:.24em;
+      color:var(--muted);
+      margin-bottom:18px;
+    }
+    .case-tag-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-bottom:16px;
+    }
+    .case-tag{
+      font-size:11px;
+      text-transform:uppercase;
+      border-radius:999px;
+      padding:4px 9px;
+      border:1px solid rgba(255,255,255,.35);
+      background:rgba(0,0,0,.6);
+    }
+    .case-pills{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      font-size:12px;
+      margin-bottom:10px;
+    }
+    .case-pills span{
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(0,0,0,.6);
+      border:1px solid rgba(255,255,255,.18);
+    }
+    .case-desc{
+      font-size:13px;
+      color:var(--muted);
+      max-width:420px;
+      margin-top:12px;
+      line-height:1.7;
+    }
+    .case-right{
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .case-panel{
+      background:rgba(0,0,0,.72);
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.15);
+      padding:14px 14px 13px;
+      font-size:12px;
+      color:var(--muted);
+    }
+    .case-panel h4{
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      margin-bottom:8px;
+      color:var(--ink);
+    }
+    .case-footer{
+      padding:12px 18px 14px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:#030308;
+      border-top:1px solid rgba(255,255,255,.08);
+      font-size:12px;
+      color:var(--muted);
+    }
+    .case-actions{
+      display:flex;
+      gap:10px;
+    }
+    .case-btn{
+      padding:7px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.2);
+      background:rgba(0,0,0,.8);
+      color:var(--ink);
+      cursor:pointer;
+      font-size:12px;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+    }
+    .case-btn-main{
+      background:linear-gradient(135deg,#ff4b7d,#ffb347);
+      color:#05060a;
+      border:none;
+      box-shadow:0 14px 30px rgba(255,75,125,.7);
+    }
+    .case-btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-soft)}
   </style>
 </head>
 <body>
@@ -546,7 +722,7 @@
         <div class="orb orb-3"></div>
         <div class="hero-side-top">
           <span>Live preview</span>
-          <span>v1.0 · Portfolio</span>
+          <span>v1.1 · Portfolio</span>
         </div>
         <div class="hero-side-main">
           <div class="avatar-frame">
@@ -623,6 +799,7 @@
           <div class="project-links">
             <a class="link-pill" href="https://betzzii.github.io/rishi-task-tracker" target="_blank" rel="noopener">Live ↗</a>
             <a class="link-pill" href="https://github.com/betzzii/rishi-task-tracker" target="_blank" rel="noopener">Code ↗</a>
+            <button class="link-pill" id="open-case-study" type="button">Cine-style case study 🎬</button>
           </div>
         </article>
 
@@ -633,7 +810,7 @@
             <span>Python</span><span>Flask</span><span>NLP</span>
           </div>
           <div class="project-links">
-            <a class="link-pill" href="#" target="_blank" rel="noopener">Coming soon</a>
+            <span class="link-pill">Coming soon</span>
           </div>
         </article>
 
@@ -644,7 +821,7 @@
             <span>Python</span><span>TensorFlow</span><span>APIs</span>
           </div>
           <div class="project-links">
-            <a class="link-pill" href="#" target="_blank" rel="noopener">Coming soon</a>
+            <span class="link-pill">Coming soon</span>
           </div>
         </article>
       </div>
@@ -681,6 +858,82 @@
     © <span id="year"></span> Rishi · Built with HTML, CSS & JS
   </footer>
 
+  <!-- CINE-STYLE CASE STUDY OVERLAY ---------------------------------------->
+  <div class="case-overlay" id="case-overlay" aria-hidden="true">
+    <div class="case-frame">
+      <div class="case-header">
+        <div class="case-logo">
+          <span>TT</span>
+          <span>TASK · TRACKER · CALENDAR</span>
+        </div>
+        <div>RISHI STUDIOS · 2025</div>
+      </div>
+      <div class="case-body">
+        <div>
+          <div class="case-subtitle">feature project · productivity</div>
+          <div class="case-left-title">TASK TRACKER</div>
+          <div class="case-subtitle">with real-time calendar view</div>
+          <div class="case-tag-row">
+            <span class="case-tag">JavaScript</span>
+            <span class="case-tag">Firebase Auth</span>
+            <span class="case-tag">Firestore</span>
+            <span class="case-tag">Responsive</span>
+          </div>
+          <div class="case-pills">
+            <span>Sign-in / Sign-up flow</span>
+            <span>Realtime task sync</span>
+            <span>Monthly calendar heatmap</span>
+          </div>
+          <p class="case-desc">
+            Task Tracker + Calendar is a focused productivity app that lets users sign in,
+            create tasks with due dates, mark them as important, and watch them appear as
+            glowing markers on a calendar grid. It uses Firebase Authentication and Cloud
+            Firestore to keep everything in sync, so updates feel instant and reliable.
+          </p>
+        </div>
+        <div class="case-right">
+          <div class="case-panel">
+            <h4>THE BRIEF</h4>
+            <p>
+              Build something more serious than a basic to-do list: an app that feels like a
+              real product, with auth, database, and a visual calendar. It needed to be fast,
+              minimal, and easy to extend with features like filters and reminders later.
+            </p>
+          </div>
+          <div class="case-panel">
+            <h4>MY ROLE</h4>
+            <p>
+              Solo developer responsible for UX, UI, front-end engineering, and Firebase
+              integration. I designed the flows, configured Firebase, and implemented the
+              Firestore queries and real-time listeners.
+            </p>
+          </div>
+          <div class="case-panel">
+            <h4>TECH HIGHLIGHTS</h4>
+            <p>
+              • Modular Firebase v10 SDK<br />
+              • Realtime Firestore snapshot listeners<br />
+              • Client-side date mapping to calendar cells<br />
+              • Animated, responsive UI in pure HTML/CSS/JS
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="case-footer">
+        <div>Scroll the main page to see more projects and skills.</div>
+        <div class="case-actions">
+          <a class="case-btn" href="https://github.com/betzzii/rishi-task-tracker" target="_blank" rel="noopener">
+            View code ↗
+          </a>
+          <a class="case-btn case-btn-main" href="https://betzzii.github.io/rishi-task-tracker" target="_blank" rel="noopener">
+            Open live app →
+          </a>
+          <button class="case-btn" id="close-case">Close ✕</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
     // Set year
     document.getElementById("year").textContent = new Date().getFullYear();
@@ -695,8 +948,6 @@
       typeIndex++;
       if(typeIndex <= typeText.length){
         setTimeout(typeStep, 55);
-      } else {
-        typeTarget.classList.add("done");
       }
     }
     typeStep();
@@ -729,6 +980,35 @@
         heroParallax.style.transform = "none";
       });
     }
+
+    // Cine-style case study overlay
+    const overlay = document.getElementById("case-overlay");
+    const openCase = document.getElementById("open-case-study");
+    const closeCase = document.getElementById("close-case");
+
+    function openOverlay(){
+      if(!overlay) return;
+      overlay.classList.add("open");
+      overlay.setAttribute("aria-hidden","false");
+      document.body.style.overflow = "hidden";
+    }
+    function closeOverlay(){
+      if(!overlay) return;
+      overlay.classList.remove("open");
+      overlay.setAttribute("aria-hidden","true");
+      document.body.style.overflow = "";
+    }
+
+    if(openCase) openCase.addEventListener("click", openOverlay);
+    if(closeCase) closeCase.addEventListener("click", closeOverlay);
+    if(overlay){
+      overlay.addEventListener("click",(e)=>{
+        if(e.target === overlay) closeOverlay();
+      });
+    }
+    window.addEventListener("keydown",(e)=>{
+      if(e.key === "Escape") closeOverlay();
+    });
   </script>
 </body>
 </html>
